@@ -24,24 +24,33 @@ function cashModule() {
   } // display input users click
 
   function getBalance() {
-    console.log("getBalance");
     amount = [balance];
     display(amount);
     /*display();
     return balance;*/ //back up code
   } // display balance
 
-  function depositCash(cash) {
-    balance += cash;
+  function clear() {
+    calculator.clear();
+    amount = [0];
+    display(calculator.getTotal());
+    //display(calculator.clear());
+  }
+
+  function depositCash() {
+
+    balance += extractNum(amount);
+    console.log(balance);
   }
 
   function withdrawalCash(cash) {
-    balance -= cash;
+    balance -= extractNum(amount);
+    console.log(balance);
   }
 
   function extractNum(){
     var number = "";
-    while(!isNaN(amount[0])){
+    while(!isNaN(amount[0]) || amount[0] === "."){
       number = number + amount.shift();
     }
     return Number(number);
@@ -61,19 +70,19 @@ function cashModule() {
         if (operator === "+"){
           calculator.add(currentNum);
         }else if (operator === "-"){
-          calculator.subtract(currentNum);    
+          calculator.subtract(currentNum);
         }else if (operator === "*"){
-          calculator.multiply(currentNum);     
+          calculator.multiply(currentNum);
         }else if (operator === "/"){
-          calculator.divide(currentNum);   
+          calculator.divide(currentNum);
         }
       }
 
       display(calculator.getTotal());
 
-      //identify the operator 
+      //identify the operator
 
-      // extractNum 
+      // extractNum
 
       // perform operation
 
@@ -86,7 +95,8 @@ function cashModule() {
     withdrawalCash : withdrawalCash,
     display : display,
     input :input,
-    calculation : calculation
+    calculation : calculation,
+    clear : clear
   };
 }
 
@@ -95,7 +105,6 @@ var buttons = document.querySelectorAll(".number"); // buttons call for class "n
 
 for (var i = 0; i < buttons.length; i++ ){
   buttons[i].addEventListener('click', cashRegister.input);
-  console.log(buttons[i].innerHTML);
 } // loops though class "number" (from HTML) and makes it run input function when clicked
 
 buttons = document.querySelectorAll(".operations"); // reassign buttons to call class "operation"
@@ -108,3 +117,13 @@ balance.addEventListener("click", cashRegister.getBalance); //run getBalance fun
 
 var calculate = document.querySelector("#equal");
 calculate.addEventListener("click",cashRegister.calculation);
+
+var clearing = document.querySelector("#clear");
+clearing.addEventListener("click", cashRegister.clear);
+
+clearing = document.querySelector("#deposit");
+clearing.addEventListener("click", cashRegister.depositCash);
+
+clearing = document.querySelector("#withdraw");
+clearing.addEventListener("click", cashRegister.withdrawalCash);
+console.log(isNaN("."));
