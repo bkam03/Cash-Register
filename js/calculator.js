@@ -23,12 +23,17 @@ function calcModule() {
     return total;
   }
 
+  function getTotal(){
+    return total;
+  }
+
   return {
     add : add,
     subtract : subtract,
     multiply : multiply,
     divide : divide,
-    clear : clear
+    clear : clear,
+    getTotal : getTotal
   };
 }
 
