@@ -1,3 +1,37 @@
-#button {
-  color: red;
+body{
+    font-size: 30px;
+    width: 600px;
 }
+
+#display{
+    text-align: right;
+    width: 400px;
+}
+#button {
+  display: flex;
+  color:red;
+
+}
+
+#numbers{
+    display: flex;
+    flex-direction: column;
+    width:250px;
+}
+
+.row{
+    display: flex;
+    justify-content: space-around;
+}
+
+#operators, #transactions{
+    display: flex;
+    flex-direction: column;
+}
+
+#operators{
+    margin-right:  20px;
+    margin-left:  20px;
+}
+
+
