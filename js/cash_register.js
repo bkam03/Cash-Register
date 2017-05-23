@@ -26,26 +26,25 @@ function cashModule() {
   function getBalance() {
     amount = [balance];
     display(amount);
-    /*display();
-    return balance;*/ //back up code
   } // display balance
 
   function clear() {
     calculator.clear();
     amount = [0];
     display(calculator.getTotal());
-    //display(calculator.clear());
   }
 
   function depositCash() {
 
     balance += extractNum(amount);
-    console.log(balance);
+    //console.log(balance);
+    clear();
   }
 
-  function withdrawalCash(cash) {
+  function withdrawalCash() {
     balance -= extractNum(amount);
-    console.log(balance);
+    //console.log(balance);
+    clear();
   }
 
   function extractNum(){
@@ -79,14 +78,6 @@ function cashModule() {
       }
 
       display(calculator.getTotal());
-
-      //identify the operator
-
-      // extractNum
-
-      // perform operation
-
-    //display total
   }
 
   return {
@@ -100,30 +91,20 @@ function cashModule() {
   };
 }
 
-var cashRegister = new cashModule(); // turn cashModule into an object
-var buttons = document.querySelectorAll(".number"); // buttons call for class "number" in HTML
+var cashRegister = cashModule(); // turn cashModule into an object
 
+var buttons = document.querySelectorAll(".number"); // buttons call for class "number" in HTML
 for (var i = 0; i < buttons.length; i++ ){
   buttons[i].addEventListener('click', cashRegister.input);
 } // loops though class "number" (from HTML) and makes it run input function when clicked
 
 buttons = document.querySelectorAll(".operations"); // reassign buttons to call class "operation"
-
 for( var i = 0; i < buttons.length;i++) {
   buttons[i].addEventListener('click', cashRegister.input);
 }// loops though class "operations" (from HTML) and makes it run input function when clicked
 
 balance.addEventListener("click", cashRegister.getBalance); //run getBalance function when clicked
-
-var calculate = document.querySelector("#equal");
-calculate.addEventListener("click",cashRegister.calculation);
-
-var clearing = document.querySelector("#clear");
-clearing.addEventListener("click", cashRegister.clear);
-
-clearing = document.querySelector("#deposit");
-clearing.addEventListener("click", cashRegister.depositCash);
-
-clearing = document.querySelector("#withdraw");
-clearing.addEventListener("click", cashRegister.withdrawalCash);
-console.log(isNaN("."));
+equal.addEventListener("click",cashRegister.calculation);
+clear.addEventListener("click", cashRegister.clear);
+deposit.addEventListener("click", cashRegister.depositCash);
+withdraw.addEventListener("click", cashRegister.withdrawalCash);
