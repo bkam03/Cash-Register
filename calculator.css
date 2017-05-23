@@ -1,27 +1,39 @@
 body{
     font-size: 30px;
-    width: 600px;
+    width: 550px;
+
 }
 
 #display{
     text-align: right;
-    width: 400px;
+    width: 95%;
+    height: 50px;
+    background-color:lightgrey;
+    padding-right: 30px;
+    line-height: 50px;
 }
 #button {
   display: flex;
-  color:red;
+  color: red;
+  text-align: center;
 
 }
 
 #numbers{
     display: flex;
     flex-direction: column;
-    width:250px;
+    width:40%;
 }
 
 .row{
     display: flex;
     justify-content: space-around;
+}
+
+.number, .operations, .functions {
+  border: 3px solid black;
+  padding: 10px;
+  margin-top: 10px;
 }
 
 #operators, #transactions{
@@ -33,5 +45,6 @@ body{
     margin-right:  20px;
     margin-left:  20px;
 }
+
 
 
