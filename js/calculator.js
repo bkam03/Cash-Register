@@ -3,19 +3,19 @@
 function calcModule() {
   var total = 0;
 
-  function add(numInput) {
+  function add( numInput ) {
     return total += numInput;
   }
 
-  function subtract(numInput) {
+  function subtract( numInput ) {
     return total -= numInput;
   }
 
-  function multiply(numInput) {
+  function multiply( numInput ) {
     return total *= numInput;
   }
 
-  function divide(numInput) {
+  function divide( numInput ) {
     return total /= numInput;
   }
   function clear() {
